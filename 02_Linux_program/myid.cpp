@@ -5,6 +5,10 @@
 using namespace std;
 
 //
+// Day la chuong trinh dung de hien thong tin user tren ubuntu
+//
+
+//
 // Ham dung de tach mot chuoi theo ky tu "delim" thanh mot chuoi cac vector 
 // input (string,char) . Ex: str = "a;b;c;d" , delim = ";"
 // output : {a,b,c,d} 
@@ -79,7 +83,7 @@ int main(){
     string strPasswdFilename("/etc/passwd");
     string strGroupFilename("/etc/group");
 
-    // Nhap username
+    // 1. Nhap username
     cout << "Insert username: ";
     char    inpusername[64]// bien username nhap bang ban phim
             , username[64]; // Bien tam cua inpusername co ky tu cuoi de danh dau ket thuc
@@ -91,7 +95,7 @@ int main(){
     // Danh dau ket thuc username bang ky tu ':'. Tranh truong hop "user" , "userA"
     strcat(username,":");
 
-    // Doc noi dung file Passwd va Group
+    // 2. Doc noi dung file Passwd va Group
     vector<string> linePasswd = vctReadfile(strPasswdFilename);
     vector<string> lineGroup  = vctReadfile(strGroupFilename);
 
