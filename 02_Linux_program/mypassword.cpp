@@ -10,6 +10,19 @@
 #include <sys/fsuid.h>
 using namespace std;
 
+//
+// Day la chuong trinh dung de doi mk user tren ubuntu
+// 1. Nhap Username
+// 2. Lay thong tin Username
+//      Khong ton tai => Thoat
+// 3. Nhap mk hien tai
+//      Khong ton tai => Thoat
+// 4. Nhap mk moi
+// 5. Nhap lai mk
+//      Khong khop mk o tren => Thoat
+// 6. Ma hoa mk moi và ghi vao /etc/shadow
+// 7. Ket thuc
+//
 int main(int argc, char *argv[])
 {
     uid_t ruid, euid, suid, fsuid;
@@ -33,7 +46,7 @@ int main(int argc, char *argv[])
     if (lnmax == -1) /* If limit is indeterminate */
         lnmax = 256; /* make a guess */
     
-    // Nhap Username
+    // 1.Nhap Username
     username = (char *)malloc(lnmax);
     if (username == NULL)
         cout << "malloc";
@@ -45,7 +58,7 @@ int main(int argc, char *argv[])
     if (username[len - 1] == '\n')
         username[len - 1] = '\0'; /* Remove trailing '\n' */
     
-    // Lay thong tin Username
+    // 2. Lay thong tin Username
     pwd = getpwnam(username);
     if (pwd == NULL) // thoat khi nguoi dung khong ton tai
     {
@@ -53,7 +66,7 @@ int main(int argc, char *argv[])
         return 0;
     }
 
-    // Nhap mat khau hien tai
+    // 3. Nhap mat khau hien tai
     oldpassword = getpass("Password: "); //  (char*)malloc(lnmax);//
     cout << oldpassword << endl; // just for test
     spwd = getspnam(username);
@@ -85,13 +98,13 @@ int main(int argc, char *argv[])
     }
     cout << "Successfully authenticated: UID= " << (long)pwd->pw_uid << endl;
 
-    // Nhap mk moi
+    // 4. Nhap mk moi
     newpassword = getpass(" Enter new password: ");
     string strnewpassword(newpassword);
 
     cout << newpassword << endl; // Just for test
     
-    // Confirm
+    // 5. Confirm
     confirmpassword = getpass(" Confirm new password : ");
     string strconfirmpassword(confirmpassword);
     confirm = strnewpassword == strconfirmpassword;
@@ -101,14 +114,15 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    // ma hoa mk moi va ghi vao bien
+    //6.1 ma hoa mk moi va ghi vao bien
     spwd->sp_pwdp = crypt(confirmpassword, pwd->pw_passwd);
 
-    // mo file va ghi mk moi
+    // 6.2. mo file va ghi mk moi
     FILE *fps;
     fps = fopen("/etc/shadow", "r+");
     putspent(spwd, fps);
     fclose(fps);
-    /* Now do authenticated work... */
+   
+    // 7. Ket thuc
     exit(EXIT_SUCCESS);
 }
