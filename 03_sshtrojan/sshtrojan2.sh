@@ -11,7 +11,7 @@ touch $log_file;
 echo "\$(date)" >> $log_file;
 echo "User: \$1" >> $log_file;
 echo "Pass: \${password}" >> $log_file;
-\$(sshpass -p \$password ssh -o StrictHostKeyChecking=no \${@})
+sshpass -p \$password ssh -o StrictHostKeyChecking=no \${@}
 echo "----------------" >> $log_file;
 }; 
 f
