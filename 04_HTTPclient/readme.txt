@@ -1,3 +1,4 @@
+Python 3.7.2
 1. GET 
 Thực hiện GET trang chủ và in ra title của trang.
 Tên chương trình: httpget
