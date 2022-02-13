@@ -3,8 +3,6 @@ from email import header
 import socket
 from bs4 import BeautifulSoup
 import argparse
-from PIL import Image
-from io import BytesIO
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('--url', help='url của trang web định lấy ảnh', 
                     default='http://blogtest.vnprogramming.com/')

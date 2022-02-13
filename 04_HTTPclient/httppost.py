@@ -32,8 +32,8 @@ def login(url, user, password):
             s.connect((HOST, PORT))
             s.sendall(request.encode())
             data = s.recv(1024)
-            #print(data.decode)
-            if '302' in data.decode(): 
+            #print(data.decode())
+            if 'HTTP/1.1 302 Found' in data.decode(): 
                 print('User '+ user + ' đăng nhập thành công')
             else:
                 print('User '+ user+' đăng nhập thất bại')
