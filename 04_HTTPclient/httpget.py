@@ -6,10 +6,9 @@ parser = argparse.ArgumentParser(description='')
 parser.add_argument('--url', help='url của trang web định lấy title', default='http://blogtest.vnprogramming.com/')
 
 def get_title(url):
-    HOST = url.split("://")[1]
-    HOST = HOST.strip('/')
+    HOST = url.split("://")[1].split('/')[0] #"blogtest.vnprogramming.com"
     PORT = 80
-    PATH = "/wp-admin"
+    PATH = url.split(HOST)[1]
 
     payload = (f"GET {PATH} HTTP/1.1\r\n"
                 f"Host: {HOST}\r\n\r\n")

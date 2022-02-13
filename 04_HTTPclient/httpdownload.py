@@ -41,6 +41,7 @@ def dowload_image(url,imageurl, savepath):
     if '200' in soup:
         ContentLength = soup.split('Content-Length')[1].split('\n')[0]
         print(f'Kích thước file ảnh {ContentLength}' )
+        print(f"save at {savepath}")
     else:
         print("Không tồn tại file ảnh ")
         
@@ -50,6 +51,7 @@ def main(args):
     url = args.url
     savepath = args.savepath
     dowload_image(url, imageurl, savepath)
+    
 
 if __name__ == '__main__':
     args = parser.parse_args()
