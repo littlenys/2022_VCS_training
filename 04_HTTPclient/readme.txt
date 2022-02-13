@@ -25,7 +25,7 @@ Hoặc Upload failed.
 Thực hiện GET để download một file ảnh trên máy chủ, hiển thị kích thước của file ảnh download được.
 Tên chương trình: httpdownload
 Ví dụ:
-python httpdownload.py --url ttp://blogtest.vnprogramming.com/ --remote-file /wp-content/uploads/2020/09/test.png
+python httpdownload.py --url http://blogtest.vnprogramming.com/ --remote-file /wp-content/uploads/2020/09/test.png
 Output: 
 Kích thước file ảnh: 14574 bytes
 Hoặc Không tồn tại file ảnh
