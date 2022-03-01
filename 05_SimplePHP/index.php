@@ -17,3 +17,6 @@ if (isset($_GET['controller'])) {
 }
 require_once('routes.php');
 require('View/layouts/admin/footer.php');
+
+
+
