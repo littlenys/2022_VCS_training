@@ -22,4 +22,13 @@ class PagesController extends BaseController
   {
     $this->render('error');
   }
+
+  public function login()
+  {
+    $this->render('login');
+  }
+  public function signup()
+  {
+    $this->render('signup');
+  }
 }

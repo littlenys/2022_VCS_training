@@ -1,3 +1,2 @@
 <?php
-  echo "Tên tôi là: $name, năm nay tôi $age tuổi";
-?>
+echo "This is home page";

@@ -1,4 +1,7 @@
 <?php
+session_start(); /*đăng ký phiên làm việc*/
+ob_start();
+require('View/layouts/admin/header.php');
 require_once('connection.php');
 
 if (isset($_GET['controller'])) {
@@ -13,3 +16,4 @@ if (isset($_GET['controller'])) {
   $action = 'home';
 }
 require_once('routes.php');
+require('View/layouts/admin/footer.php');
