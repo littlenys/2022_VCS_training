@@ -31,4 +31,9 @@ class PagesController extends BaseController
   {
     $this->render('signup');
   }
+
+  public function logout()
+  {
+    $this->render('logout');
+  }
 }

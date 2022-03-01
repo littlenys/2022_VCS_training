@@ -28,21 +28,30 @@ class Header {
 				$password = md5($_POST['password']);
 			}
 
-			if ($username && $password ) {
+			if ($username && $password ){
 				$user = $userModel->login($username, $password);
-                if ($user->num_rows = 1){
+                if ($user->num_rows > 0){
                     $data = $user->fetch_array();
-					$_SESSION['useradmin'] = $data;
-					if ($data['role'] == 'admin') {
-                        header('Location: View/pages/home');
+					if ($data['role'] == 'teacher') {
+						$_SESSION['teacher'] = $data;
+						unset($_SESSION['student']);
+                        header('Location: index.php?controller=pages&action=home');
+						echo "<script>alert('đăng nhap giao vien thành công')</script>";
                     } else {
-                        echo "<script>alert('Vui lòng đăng nhập lại')</script>";
+                        $_SESSION['student'] = $data;
+						unset($_SESSION['teacher']);
+						echo "<script>alert('đăng nhap hoc sinh thành công')</script>";
+                        header('Location: index.php?controller=pages&action=home');
+						echo "<script>alert('đăng nhap hoc sinh thành công')</script>";
                     }
                 } 
 				else {
                     echo "<script>alert('Sai mật khẩu hoặc tên đăng nhập')</script>";
                 }
 
+			}
+			else{
+				echo "<script>alert('Nhap lai')</script>";
 			}
 			
 		}

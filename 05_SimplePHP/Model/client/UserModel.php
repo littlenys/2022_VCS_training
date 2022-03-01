@@ -25,7 +25,7 @@ class UserModel extends Database{
 
 	public function login($username, $password)
 	{
-		$sql ="SELECT ID,role FROM users WHERE username = '$username' and password = '$password'";
+		$sql ="SELECT * FROM users WHERE username = '$username' and password = '$password'";
 		$result = $this->db->conn->query($sql);
 		return $result;
 	}
