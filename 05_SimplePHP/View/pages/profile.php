@@ -14,9 +14,9 @@ class Header {
 		require_once('../05_SimplePHP/View/layouts/client/get_list.php');
 	}
 
-	public function GetAllStudent($userModel) 
+	public function GetInfo($userModel) 
     {
-	    $list = $userModel->getallstudents();
+	    $list = $userModel->getinfo();
     }
     
     public function DeleteStudent($userModel) 

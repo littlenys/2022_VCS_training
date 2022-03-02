@@ -40,5 +40,10 @@ class PagesController extends BaseController
   {
     $this->render('get_list');
   }
+
+  public function addstudent()
+  {
+    $this->render('addstudent');
+  }
   
 }

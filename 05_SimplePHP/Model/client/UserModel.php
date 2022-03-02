@@ -36,6 +36,16 @@ class UserModel extends Database{
 		$result = $this->db->conn->query($sql);
 		return $result;
 	}
+
+	function deleteStudent($role,$id)
+	{
+		if ($role = 'teacher')
+		{
+			$sql = "DELETE FROM users WHERE id = '$id'";
+			$result = $this->db->conn->query($sql);
+			return $result;
+		}
+	}
  
 
 
