@@ -9,7 +9,7 @@ avatar VARCHAR(512),
 role VARCHAR(10) DEFAULT 'student',
 is_deleted BOOLEAN DEFAULT false,
 reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-)
+);
 /*username, password, hoten, email, phonenumber, avatar, role*/
 CREATE TABLE message(
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -18,7 +18,7 @@ idnguoigui INT(6) UNSIGNED,
 idnguoinhan INT(6) UNSIGNED,
 is_deleted BOOLEAN DEFAULT false,
 reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-)
+);
 
 CREATE TABLE assignment(
 id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
