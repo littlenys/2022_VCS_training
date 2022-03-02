@@ -62,12 +62,9 @@ class Header {
 
 if(isset($_SESSION['teacher']))
 {
-	header('Location: index.php?controller=pages&action=home');
-}
-else if(isset($_SESSION['student']))
-{
-	header('Location: index.php?controller=pages&action=home');
-}
-else {
     $header = new Header();
+}
+else
+{
+    echo "<script>alert('You don't hace permission')</script>";
 }

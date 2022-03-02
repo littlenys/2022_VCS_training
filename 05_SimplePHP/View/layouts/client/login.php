@@ -1,43 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="">
 
-    
-<!-- Mirrored from www.radiustheme.com/demo/html/newsedge/newsedge/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 13 Feb 2020 08:41:57 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
-<head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>NewsEdge | Home 1</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="Public/client/img/favicon.png">
-        <!-- Normalize CSS -->
-        <link rel="stylesheet" href="Public/client/css/normalize.css">
-        <!-- Main CSS -->
-        <link rel="stylesheet" href="Public/client/css/main.css">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="Public/client/css/bootstrap.min.css">
-        <!-- Animate CSS -->
-        <link rel="stylesheet" href="Public/client/css/animate.min.css">
-        <!-- Font-awesome CSS-->
-        <link rel="stylesheet" href="Public/client/css/font-awesome.min.css">
-        <!-- Owl Caousel CSS -->
-        <link rel="stylesheet" href="Public/client/vendor/OwlCarousel/owl.carousel.min.css">
-        <link rel="stylesheet" href="Public/client/vendor/OwlCarousel/owl.theme.default.min.css">
-        <!-- Main Menu CSS -->
-        <link rel="stylesheet" href="Public/client/css/meanmenu.min.css">
-        <!-- Magnific CSS -->
-        <link rel="stylesheet" type="text/css" href="Public/client/css/magnific-popup.css">
-        <!-- Switch Style CSS -->
-        <link rel="stylesheet" href="Public/client/css/hover-min.css">
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="Public/client/style.css">
-        <!-- For IE -->
-        <link rel="stylesheet" type="text/css" href="Public/client/css/ie-only.css" />
-        <!-- Modernizr Js -->
-        <script src="Public/client/js/modernizr-2.8.3.min.js"></script>
-    </head>
 
     <body>
         <div id="preloader"></div>

@@ -29,4 +29,14 @@ class UserModel extends Database{
 		$result = $this->db->conn->query($sql);
 		return $result;
 	}
+
+	function getallstudents()
+	{
+		$sql = "SELECT * FROM users WHERE role = 'student'";
+		$result = $this->db->conn->query($sql);
+		return $result;
+	}
+ 
+
+
 }

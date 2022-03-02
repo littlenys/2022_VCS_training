@@ -36,4 +36,9 @@ class PagesController extends BaseController
   {
     $this->render('logout');
   }
+  public function get_list()
+  {
+    $this->render('get_list');
+  }
+  
 }
