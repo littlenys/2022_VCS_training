@@ -11,11 +11,11 @@
         <a href="index.php?controller=pages&action=addstudent">Thêm sinh viên</a> <br/> <br/>
         <table width="100%" border="1" cellspacing="0" cellpadding="10">
             <tr>
-                <td>ID</td>
-                <td>Name</td>
-                <td>Email</td>
-                <td>Phone</td>
-                <td>Options</td>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Options</th>
             </tr>
     <?php
         $_POST['delete'] = NULL;    
@@ -31,8 +31,14 @@
                 <td>
                     <form method="post">
                         <input onclick="window.location = 'student-edit.php?id=<?php echo $item['id']; ?>'" type="button" value="Sửa"/>
+                    </form>
+                    <form method="post">
                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>"/>
                         <input onclick="return confirm('Bạn có chắc muốn xóa không?');" type="submit" name="delete" value="Xóa"/>
+                    </form>
+                    <form method="post">
+                        <input type="hidden" name="id" value="<?php echo $item['id']; ?>"/>
+                        <input type="submit" name="read" value="Xem"/>
                     </form>
                 </td>
             </tr>

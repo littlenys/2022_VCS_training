@@ -6,29 +6,16 @@ class Header {
 		require_once('../05_SimplePHP/Model/client/UserModel.php');
 
 		$userModel = new UserModel();
-		$error = $this->GetAllStudent($userModel);
-        if (!empty($_POST['delete']) && isset($_SESSION['teacher']))
-        {
-            $error = $this->DeleteStudent($userModel);
-        }
-		require_once('../05_SimplePHP/View/layouts/client/get_list.php');
+        $info = $this->GetInfo($userModel);
+		require('../05_SimplePHP/View/layouts/client/profile.php');
 	}
 
 	public function GetInfo($userModel) 
     {
-	    $list = $userModel->getinfo();
+        $id = $_GET['id'];
+	    $info = $userModel->readuser($id)->fetch_array();
+        return $info;
     }
-    
-    public function DeleteStudent($userModel) 
-    {
-        $id = NULL;
-        $id = $_POST['id'];
-        $result = $userModel->deletestudent($_SESSION['teacher']['role'], $id);
-        $name = $result['hoten'];
-        if ($name!= NULL){
-            echo "<script>alert('Đã xóa sinh viên $name')</script>";
-        }
-	}
 }
 
 if(isset($_SESSION['teacher']) or isset($_SESSION['student']))

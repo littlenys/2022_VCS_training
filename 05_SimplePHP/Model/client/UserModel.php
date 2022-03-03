@@ -37,14 +37,23 @@ class UserModel extends Database{
 		return $result;
 	}
 
-	function deleteStudent($role,$id)
+	function deletestudent($role,$id)
 	{
 		if ($role = 'teacher')
 		{
-			$sql = "DELETE FROM users WHERE id = '$id'";
-			$result = $this->db->conn->query($sql);
-			return $result;
+			$sql1 = "SELECT * FROM users WHERE id = '$id'";
+			$sql2 = "DELETE FROM users WHERE id = '$id'";
+			$result1 = $this->db->conn->query($sql1);
+			$result2 = $this->db->conn->query($sql2);
+			return $result1;
 		}
+	}
+
+	function readuser($id)
+	{
+		$sql = "SELECT * FROM users WHERE id = '$id'";
+		$result = $this->db->conn->query($sql);
+		return $result;
 	}
  
 

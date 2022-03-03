@@ -11,6 +11,10 @@ class Header {
         {
             $error = $this->DeleteStudent($userModel);
         }
+        if (!empty($_POST['read']))
+        {
+            $error = $this->ReadStudent($userModel);
+        }
 		require_once('../05_SimplePHP/View/layouts/client/get_list.php');
 	}
 
@@ -23,11 +27,18 @@ class Header {
     {
         $id = NULL;
         $id = $_POST['id'];
-        $result = $userModel->deletestudent($_SESSION['teacher']['role'], $id);
-        $name = $result['hoten'];
-        if ($name!= NULL){
-            echo "<script>alert('Đã xóa sinh viên $name')</script>";
-        }
+        $result = $userModel->deletestudent($_SESSION['teacher']['role'], $id)->fetch_array();
+        $name= $result['hoten'];
+        echo "<script>alert('Đã xóa sinh viên $name')</script>";
+        header('Location: index.php?controller=pages&action=get_list');
+	}
+
+    public function ReadStudent($userModel) 
+    {
+        $id = NULL;
+        $id = $_POST['id'];
+        $result = $userModel->readuser($id)->fetch_array();
+        header('Location: index.php?controller=pages&action=profile&id='.$result['id']);
 	}
 }
 

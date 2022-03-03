@@ -45,5 +45,15 @@ class PagesController extends BaseController
   {
     $this->render('addstudent');
   }
+
+  public function myinfo()
+  {
+    $this->render('myinfo');
+  }
+
+  public function profile()
+  {
+    $this->render('profile');
+  }
   
 }
