@@ -5,6 +5,9 @@
         <title>Danh sách sinh vien</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
     </head>
     <body>
         <h1>Danh sách sinh vien</h1>
@@ -30,7 +33,8 @@
                 <td><?php echo $item['phonenumber']; ?></td>
                 <td>
                     <form method="post">
-                        <input onclick="window.location = 'student-edit.php?id=<?php echo $item['id']; ?>'" type="button" value="Sửa"/>
+                        <input type="hidden" name="id" value="<?php echo $item['id']; ?>"/>
+                        <input type="submit" name="update" value="Sửa"/>
                     </form>
                     <form method="post">
                         <input type="hidden" name="id" value="<?php echo $item['id']; ?>"/>

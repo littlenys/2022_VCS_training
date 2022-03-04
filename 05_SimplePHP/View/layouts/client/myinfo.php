@@ -38,7 +38,7 @@
             <td>Phone</td>
             <th><?php echo $phonenumber; ?></th>
         </tr>
-        </table>
+    </table>
 
     </body>
 </html>

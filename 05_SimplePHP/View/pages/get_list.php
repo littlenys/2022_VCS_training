@@ -15,6 +15,11 @@ class Header {
         {
             $error = $this->ReadStudent($userModel);
         }
+
+        if (!empty($_POST['update']))
+        {
+            $error = $this->UpdateStudent($userModel);
+        }
 		require_once('../05_SimplePHP/View/layouts/client/get_list.php');
 	}
 
@@ -39,6 +44,15 @@ class Header {
         $id = $_POST['id'];
         $result = $userModel->readuser($id)->fetch_array();
         header('Location: index.php?controller=pages&action=profile&id='.$result['id']);
+	}
+
+    
+    public function UpdateStudent($userModel) 
+    {
+        $id = NULL;
+        $id = $_POST['id'];
+        $result = $userModel->readuser($id)->fetch_array();
+        header('Location: index.php?controller=pages&action=editstudent&id='.$result['id']);
 	}
 }
 

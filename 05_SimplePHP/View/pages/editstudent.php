@@ -6,25 +6,30 @@ class Header {
 		require_once('../05_SimplePHP/Model/client/UserModel.php');
 
 		$userModel = new UserModel();
-		$error = $this->signUp($userModel);
-
-		require_once('../05_SimplePHP/View/layouts/client/signup.php');
+        $id = $_GET['id'];
+		$error = $this->Edit($userModel);
+	    $info = $userModel->readuser($id)->fetch_array();
+		if (isset($_POST['exit'])) 
+		{
+			header('Location: index.php?controller=pages&action=get_list');
+		}
+		require_once('../05_SimplePHP/View/layouts/client/editstudent.php');
 	}
 
-	public function signUp($userModel) {
+	public function Edit($userModel) {
+        $id = $_GET['id'];
         $username = $password = $hoten = $email = $phonenumber = $avatar = $role = NULL;
         $role = "student";
 		$error = array();
 		$error['username'] = $error['password'] = $error['hoten'] = $error['username_exist'] = $error['hoten'] = NULL;
 
-		if (isset($_POST['signup'])) {
+		if (isset($_POST['Edit'])) {
 			if (empty($_POST['username'])) {
 				$error['username'] = '* Cần điền tên đăng nhập';
 			} else {
 				$username = $_POST['username'];
 			}
-			if (empty($_POST['password'])) {
-				$error['password'] = '* Cần điền mật khẩu';
+            if (empty($_POST['password'])) {
 			} else {
 				$password = md5($_POST['password']);
 			}
@@ -33,7 +38,6 @@ class Header {
 			} else {
 				$hoten = $_POST['hoten'];
 			}
-
             if (empty($_POST['email'])) {
 			} else {
 				$email = $_POST['email'];
@@ -42,26 +46,15 @@ class Header {
 			} else {
 				$phonenumber = $_POST['phonenumber'];
 			}
- 
-            if (empty($_POST['role'])) {
-			} else {
-				$role = $_POST['role'];
-			}
 
-			if ($username && $password && $hoten) {
-				$check = $userModel->checkExists($username);
 
-				if ($check->num_rows > 0) {
-					$error['username_exist'] = '* Tên đăng nhập đã bị trùng';
-				} else {
-					$userModel->signup($username, $password, $hoten, $email, $phonenumber, $avatar, $role);
-					echo "<script>alert('Thêm thành công')</script>";
-				}
-			}
-			
-		}
+			$userModel->updatestudent($id,$username, $password, $hoten, $email, $phonenumber);
+			header('Location: index.php?controller=pages&action=get_list');
+            } // end post edit
+    }// end function edit
+} // end header
 
-		return $error;
-	}
+if(isset($_SESSION['teacher']))
+{
+	$header = new Header();
 }
-$header = new Header();

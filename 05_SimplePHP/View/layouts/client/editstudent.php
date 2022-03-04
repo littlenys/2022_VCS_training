@@ -31,14 +31,15 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <div class="title-login-form">Đăng ký</div>
+                            <div class="title-login-form">Thêm sinh vien</div>
                         </div>
                         <div class="modal-body">
                             <div class="login-form">
                                 <form method="post">
                                     <label>Tên đăng nhập *</label>
                                     <br>
-                                    <input type="text" name="username" placeholder="Tên đăng nhập" />
+                                    <input type="text" name="username" placeholder="Tên đăng nhập" 
+                                            value='<?php echo $info["username"]?>'/>
                                     <br>
                                     <label>Mật khẩu *</label>
                                     <br>
@@ -46,25 +47,27 @@
                                     <br>
                                     <label>Họ và tên *</label>
                                     <br>
-                                    <input type="text" name="hoten" placeholder="Họ tên" />
+                                    <input type="text" name="hoten" placeholder="Họ tên" 
+                                            value='<?php echo $info["hoten"]?>'/>
                                     <br>
                                     <label>Email </label>
                                     <br>
-                                    <input type="text" name="email" placeholder="Email" />
+                                    <input type="text" name="email" placeholder="Email" 
+                                            value='<?php echo $info["email"]?>'/>
                                     <br>
                                     <label>Số điện thoại  </label>
                                     <br>
-                                    <input type="tel" name="phonenumber" placeholder="So dien thoai" />
+                                    <input type="tel" name="phonenumber" placeholder="So dien thoai"
+                                            value='<?php echo $info["phonenumber"]?>' />
                                     <br>
                                     <label>Chức vụ </label>
                                     <br>
                                     <select name="role">
                                         <option value="student">Học sinh</option>
-                                        <option value="teacher">Giáo viên</option>
                                     </select>
                                     <br><br>
-                                    <button type="submit" value="Login" name="signup">Thêm</button>
-                                    <button class="form-cancel" type="submit" value="">Hủy</button>
+                                    <button onclick="return confirm('Bạn có chắc không?');" type="submit" value="Edit" name="Edit">Sửa</button>
+                                    <button class="form-cancel" type="submit" value="" name="exit">Hủy</button>
                                 </form>
                             </div>
                         </div>

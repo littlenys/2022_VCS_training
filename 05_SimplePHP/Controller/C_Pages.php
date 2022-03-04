@@ -46,6 +46,11 @@ class PagesController extends BaseController
     $this->render('addstudent');
   }
 
+  public function editstudent()
+  {
+    $this->render('editstudent');
+  }
+
   public function myinfo()
   {
     $this->render('myinfo');
