@@ -10,6 +10,7 @@ class Header {
         if (!empty($_POST['delete']) && isset($_SESSION['teacher']))
         {
             $error = $this->DeleteStudent($userModel);
+            header("Refresh:0");
         }
         if (!empty($_POST['read']))
         {
@@ -19,6 +20,7 @@ class Header {
         if (!empty($_POST['update']))
         {
             $error = $this->UpdateStudent($userModel);
+            header("Refresh:0");
         }
 		require_once('../05_SimplePHP/View/layouts/client/get_list.php');
 	}

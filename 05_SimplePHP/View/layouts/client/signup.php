@@ -64,7 +64,6 @@
                                     </select>
                                     <br><br>
                                     <button type="submit" value="Login" name="signup">Đăng ký</button>
-                                    <button class="form-cancel" type="submit" value="">Hủy</button>
                                 </form>
                             </div>
                         </div>

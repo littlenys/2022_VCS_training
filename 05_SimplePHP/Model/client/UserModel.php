@@ -74,6 +74,26 @@ class UserModel extends Database{
 
 	}
 
+	public function updatestudentforstudent($id, $password, $email, $phonenumber)
+	{
+		if ($password!=NULL){
+			$sql = "UPDATE users 
+			SET password = '$password', 
+				email = '$email', 
+				phonenumber = '$phonenumber'
+			WHERE id = '$id'";
+			$this->db->conn->query($sql);
+		}
+		else{
+			$sql = "UPDATE users 
+			SET email = '$email', 
+				phonenumber = '$phonenumber'
+			WHERE id = '$id'";
+			$this->db->conn->query($sql);
+		}
+
+	}
+
 	function readuser($id)
 	{
 		$sql = "SELECT * FROM users WHERE id = '$id'";
@@ -107,5 +127,13 @@ class UserModel extends Database{
 				WHERE id = '$id'";
 		$result = $this->db->conn->query($sql);
 		return $result;
+	}
+
+	public function updatestudentavatar($id,$avatar)
+	{
+		$sql = "UPDATE users 
+		SET avatar = '$avatar'
+		WHERE id = '$id'";
+			$this->db->conn->query($sql);
 	}
 }
