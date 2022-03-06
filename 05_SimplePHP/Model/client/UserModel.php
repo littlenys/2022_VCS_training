@@ -30,14 +30,14 @@ class UserModel extends Database{
 		return $result;
 	}
 
-	function getallstudents()
+	public function getallstudents()
 	{
 		$sql = "SELECT * FROM users WHERE role = 'student' AND is_deleted = false";
 		$result = $this->db->conn->query($sql);
 		return $result;
 	}
 
-	function deletestudent($role,$id)
+	public function deletestudent($role,$id)
 	{
 		if ($role = 'teacher')
 		{
@@ -94,34 +94,34 @@ class UserModel extends Database{
 
 	}
 
-	function readuser($id)
+	public function readuser($id)
 	{
 		$sql = "SELECT * FROM users WHERE id = '$id'";
 		$result = $this->db->conn->query($sql);
 		return $result;
 	}
 
-	function getmessage($idsend,$idrev)
+	public function getmessage($idsend,$idrev)
 	{
 		$sql = "SELECT * FROM message WHERE idsend = '$idsend' AND idrev = '$idrev'";
 		$result = $this->db->conn->query($sql);
 		return $result;
 	}
 
-	function sendmessage($idsend,$idrev,$noidung){
+	public function sendmessage($idsend,$idrev,$noidung){
 		$sql = "INSERT INTO message (idsend, idrev, noidung)
 					VALUES ('$idsend', '$idrev', '$noidung')";
 		$result = $this->db->conn->query($sql);
 		return $result;
 	}
 
-	function deletemessage($id){
+	public function deletemessage($id){
 		$sql = "DELETE FROM message WHERE id = $id";
 		$result = $this->db->conn->query($sql);
 		return $result;
 	}
 
-	function updatemessage($id,$noidung){
+	public function updatemessage($id,$noidung){
 		$sql = "UPDATE message
 				SET noidung = '$noidung'
 				WHERE id = '$id'";
@@ -135,5 +135,63 @@ class UserModel extends Database{
 		SET avatar = '$avatar'
 		WHERE id = '$id'";
 			$this->db->conn->query($sql);
+	}
+
+	public function addassignment($authorid,$name,$due)
+	{
+		$sql1 = "INSERT INTO assignment (authorid,name, due)
+		VALUES ('$authorid','$name', '$due')";
+		if ($this->db->conn->query($sql1) === TRUE){
+			$last_id = $this->db->conn->insert_id; 
+			return $last_id;
+		}
+		return NULL;
+	}
+
+	public function getlistassignment()
+	{
+		$sql = "SELECT * FROM assignment WHERE is_deleted = false";
+		$result = $this->db->conn->query($sql);
+		return $result;
+	}
+
+	public function viewassignment($id)
+	{
+		$sql = "SELECT * FROM fileattach WHERE partid = '$id' AND part = 'assignment'";
+		$result = $this->db->conn->query($sql);
+		return $result;
+	}
+
+	public function addsubmission($authorid,$assigmentid)
+	{
+		$sql1 = "INSERT INTO submission (authorid,assigmentid)
+		VALUES ('$authorid','$assigmentid')";
+		if ($this->db->conn->query($sql1) === TRUE){
+			$last_id = $this->db->conn->insert_id; 
+			return $last_id;
+		}
+		return NULL;
+	}
+
+	public function viewsubmission($id)
+	{
+		$sql = "SELECT * FROM fileattach WHERE partid = '$id' AND part = 'submission'";
+		$result = $this->db->conn->query($sql);
+		return $result;
+	}
+
+	public function getlistsubmission()
+	{
+		$sql = "SELECT * FROM submission WHERE is_deleted = false";
+		$result = $this->db->conn->query($sql);
+		return $result;
+	}
+
+	public function fileattach($part, $partid, $tenfile, $url)
+	{
+		$sql = "INSERT INTO fileattach (part, partid, tenfile, url)
+		VALUES ('$part', '$partid', '$tenfile', '$url')";
+		$result = $this->db->conn->query($sql);
+		return $result;
 	}
 }

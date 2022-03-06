@@ -22,7 +22,7 @@ class Header {
 		echo "start";
 		if (isset($_POST['imageupload'])) {
 			echo "up";
-			  // Kiểm tra có dữ liệu fileupload trong $_FILES không
+		 // Kiểm tra có dữ liệu fileupload trong $_FILES không
 			// Nếu không có thì dừng
 			if (!isset($_FILES["fileupload"]))
 			{

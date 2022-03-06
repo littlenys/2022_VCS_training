@@ -52,8 +52,8 @@
                             <td>
                                 <form method="post">
                                     <input type="hidden" name="id" value="<?php echo $item['id']; ?>"/>
-                                    <input type="text" name="noidungupdate" value="<?php echo $item['noidung']; ?>"/>
                                     <input onclick="return confirm('Bạn có chắc muốn xóa không?');" type="submit" name="delete" value="x">
+                                    <input type="text" name="noidungupdate" value="<?php echo $item['noidung']; ?>"/>
                                     <input onclick=" " type="submit" name="update" value="edit">
                                 </form>
                             </td>

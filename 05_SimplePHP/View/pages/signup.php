@@ -56,7 +56,7 @@ class Header {
 				} else {
 					$userModel->signup($username, $password, $hoten, $email, $phonenumber, $avatar, $role);
 					echo "<script>alert('đăng ký thành công')</script>";
-					header('Location: index.php?controller=pages&action=login');
+					//header('Location: index.php?controller=pages&action=login');
 				}
 			}
 			
