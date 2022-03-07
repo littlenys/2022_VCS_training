@@ -1,0 +1,68 @@
+.body{
+    padding-top: 200px;
+
+}
+
+
+h2{
+    size: 64px;
+    margin: auto;
+    color:rgb(7, 83, 58); 
+    text-align: center;
+}
+
+h3{
+    color: darkred;
+}
+label{
+    color: rgb(7, 83, 58) ;
+    padding-top:10px;
+    padding-bottom: 10px;
+}
+
+input{
+    border-width:2px;
+    border-style:solid;
+    border-color:rgb(7, 83, 58);    
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    margin: auto;
+    background-color: white;
+    width: 200px;
+    height: 40px;
+}
+.modal-body{
+    border-width:5px;
+    border-style:solid;
+    border-color:rgb(7, 83, 58);    
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    margin: auto;
+    background-color: white;
+    width: 300px;
+    text-align: center;
+    text-emphasis-color: rgb(7, 83, 58);
+    padding-bottom: 50px;
+
+}
+
+.form{
+    text-align: left;
+    padding-left: 50px;
+}
+
+.title-login-form{
+    padding-top: 20px;
+    size: 32px;
+    margin: auto;
+    color: rgb(7, 83, 58);
+
+}
+
+.modal-content{
+    padding-top: 150px;
+}

@@ -16,7 +16,7 @@ class Header {
 		$error = array();
 		$error['username'] = $error['password'] = NULL;
 
-		if (isset($_POST['signup'])) {
+		if (isset($_POST['login'])) {
 			if (empty($_POST['username'])) {
 				$error['username'] = '* Cần điền tên đăng nhập';
 			} else {
@@ -46,12 +46,12 @@ class Header {
                     }
                 } 
 				else {
-                    echo "<script>alert('Sai mật khẩu hoặc tên đăng nhập')</script>";
+                    $error['username'] = "Sai mật khẩu hoặc tên đăng nhập";
                 }
 
 			}
 			else{
-				echo "<script>alert('Nhap lai')</script>";
+				$error['username'] = "Nhập lại";
 			}
 			
 		}

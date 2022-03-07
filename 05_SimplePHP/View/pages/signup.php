@@ -65,4 +65,14 @@ class Header {
 		return $error;
 	}
 }
-$header = new Header();
+if(isset($_SESSION['teacher']))
+{
+	header('Location: index.php?controller=pages&action=home');
+}
+else if(isset($_SESSION['student']))
+{
+	header('Location: index.php?controller=pages&action=home');
+}
+else {
+    $header = new Header();
+}

@@ -5,6 +5,7 @@
         <title>Thong tin ca nhan</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../05_SimplePHP/Public/style/form.css">
     </head>
     <body>
         <?php
@@ -32,7 +33,7 @@
                 <input type="file" name="fileupload" id="fileupload">
                 <input type="submit" value="Đăng ảnh" name="imageupload">
         </form>
-        <div class="login-form">
+        <div class="form">
             <form method="post">
                 <label>Tên đăng nhập *</label>
                 <br>
