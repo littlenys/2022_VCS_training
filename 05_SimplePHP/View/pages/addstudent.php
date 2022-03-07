@@ -64,4 +64,6 @@ class Header {
 		return $error;
 	}
 }
-$header = new Header();
+if(isset($_SESSION['teacher'])){
+	$header = new Header();
+}

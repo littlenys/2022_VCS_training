@@ -1,6 +1,5 @@
 .body{
-    padding-top: 200px;
-
+    padding-top: 100px;
 }
 
 
@@ -14,6 +13,7 @@ h2{
 h3{
     color: darkred;
 }
+
 label{
     color: rgb(7, 83, 58) ;
     padding-top:10px;
@@ -21,6 +21,7 @@ label{
 }
 
 input{
+    font-size: 20px;
     border-width:2px;
     border-style:solid;
     border-color:rgb(7, 83, 58);    
@@ -28,12 +29,96 @@ input{
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border-top-left-radius: 10px;
-    margin: auto;
     background-color: white;
-    width: 200px;
+    padding: 0 20px;
     height: 40px;
 }
 .modal-body{
+    border-width:5px;
+    border-style:solid;
+    border-color:rgb(7, 83, 58);    
+    border-radius: 30px;
+    margin: auto;
+    background-color: white;
+    width: fit-content;
+    text-align: center;
+    text-emphasis-color: rgb(7, 83, 58);
+    padding: 15px 15px 20px 15px;
+
+}
+.Incorrect-answer-game{
+    border-width:5px;
+    border-style:solid;
+    border-color:rgb(155, 6, 18);    
+    border-radius: 10px;
+    margin: auto;
+    background-color: rgb(246, 134, 134);
+    width: fit-content;
+    text-align: center;
+    text-emphasis-color: rgb(155, 6, 18);
+    padding: 15px 15px 20px 15px;
+    width: 500px;
+    font-size: 20px;
+}
+.Correct-answer-game{
+    border-width:5px;
+    border-style:solid;
+    border-color:rgb(7, 83, 58);    
+    border-radius: 10px;
+    margin: auto;
+    background-color: rgb(165, 238, 162);
+    width: fit-content;
+    text-align: center;
+    text-emphasis-color: rgb(7, 83, 58);
+    padding: 15px 15px 20px 15px;
+    font-size: 20px;
+}
+
+.form{
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.form-item-label{
+    display: block;
+    justify-content: center;
+}
+
+.title-login-form{
+    padding-top: 0px;
+    size: 32px;
+    margin: auto;
+    color: rgb(7, 83, 58);
+
+}
+
+.modal-content{
+    padding-top: 20px;
+}
+
+.submit-button{
+    font-size: 20px;
+    border: 2px solid rgb(7, 83, 58);
+    border-radius: 10px;
+    background-color: white;
+    padding: 7px 20px;
+    cursor: pointer;
+}
+
+select{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    color: rgb(7, 83, 58);
+}
+
+.form-item-required::after {
+    content: '*';
+    color: red;
+}
+.button {
     border-width:5px;
     border-style:solid;
     border-color:rgb(7, 83, 58);    
@@ -43,26 +128,10 @@ input{
     border-top-left-radius: 30px;
     margin: auto;
     background-color: white;
-    width: 300px;
-    text-align: center;
-    text-emphasis-color: rgb(7, 83, 58);
-    padding-bottom: 50px;
-
 }
 
-.form{
-    text-align: left;
-    padding-left: 50px;
-}
-
-.title-login-form{
-    padding-top: 20px;
-    size: 32px;
-    margin: auto;
-    color: rgb(7, 83, 58);
-
-}
-
-.modal-content{
-    padding-top: 150px;
+.avatar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

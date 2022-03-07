@@ -1,0 +1,88 @@
+table {
+    background-color: #fefcfc;
+}
+
+table thead tr {
+    background-color: rgb(231 236 247);
+}
+
+table tr {
+
+}
+
+table tr:nth-child(even){
+  background-color: rgba(253, 219, 240, 0.6);
+}
+table tbody tr:hover  {
+  background-color: rgb(253, 219, 240);
+}
+table tbody tr {
+
+}
+
+table td, table th {
+    text-align: center;
+}
+
+
+table .table-col--action {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* CSS */
+table .table-col--action button {
+  appearance: none;
+  background-color: #FFFFFF;
+  border-radius: 40em;
+  border-style: none;
+  box-shadow: #ADCFFF 0 -12px 6px inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -.24px;
+  margin: 0;
+  outline: none;
+  padding: 1em 1.25em;
+  quotes: auto;
+  text-align: center;
+  text-decoration: none;
+  transition: all .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+table .table-col--action button:hover {
+  transform: scale(1.125);
+  background-color: #adefff;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+table .table-col--action button.btn-warn:hover {
+  background-color:  #fbd22a;
+}
+
+table .table-col--action button.btn-danger:hover {
+    background-color: #fb422a;
+}
+
+table .table-col--action button:active {
+  transform: scale(1.025);
+}
+
+table .table-col--action button.btn-warn {
+  box-shadow: #fbd22a 0 -12px 6px inset
+}
+
+table .table-col--action button.btn-danger {
+    box-shadow: #fb422a 0 -12px 6px inset
+}

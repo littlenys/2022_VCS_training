@@ -1,40 +1,50 @@
-
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Danh sách sinh vien</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
-    </head>
-    <body>
-        <h1>Danh sách bài tập</h1>
-        <table width="100%" border="1" cellspacing="0" cellpadding="10">
+
+<head>
+    <title>Danh sách sinh vien</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1 class="text-center">Danh sách bài tập</h1>
+    <table width="100%" border="1" cellspacing="0" cellpadding="10">
+        <col style="width:10%">
+        <col style="width:30%">
+        <col style="width:25%">
+        <col style="width:25%">
+        <col style="width:10%">
+        <thead>
             <tr>
                 <th>ID</th>
                 <th>Author</th>
                 <th>Tên</th>
                 <th>Hạn</th>
-                <th>Options</th>
+                <th class="table-col--action">Options</th>
             </tr>
-    <?php
-        $_POST['delete'] = NULL;
-        foreach ($list as $item){ ?>
+        </thead>
+        <tbody>
+        <?php
+            $_POST['delete'] = NULL;
+            foreach ($list as $item) { ?> 
             <tr>
                 <td><?php echo $item['id']; ?></td>
-                <td><?php echo $userModel->readuser($item['authorid'])->fetch_array()['hoten'] ; ?></td>
+                <td><?php echo $userModel->readuser($item['authorid'])->fetch_array()['hoten']; ?></td>
                 <td><?php echo $item['name']; ?></td>
                 <td><?php echo $item['due']; ?></td>
-                <td>
+                <td class="table-col--action">
                     <form method="post">
-                        <input type="hidden" name="id" value="<?php echo $item['id']; ?>"/>
-                        <input type="submit" name="read" value="Xem"/>
+                        <input type="hidden" name="id" value="<?php echo $item['id']; ?>" />
+                        <input type="hidden" name="read" value="Xem" />
+                        <button class="" type="submit">Xem</button>
                     </form>
                 </td>
             </tr>
-            <?php } ?>
-        </table>
-    </body>
+        <?php } ?>
+        </tbody>
+    </table>
+</body>
+
 </html>

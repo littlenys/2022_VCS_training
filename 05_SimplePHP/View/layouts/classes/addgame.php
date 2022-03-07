@@ -10,7 +10,7 @@
         <br>
         <h1>Tạo trò chơi</h1>
         <form method="post" enctype="multipart/form-data">
-                <input type="file" name="file" id="file">
+                <input type="file" name="file" id="file"  accept=".txt">
                 <br>
                 <label>Gợi ý</label>
                 <br>

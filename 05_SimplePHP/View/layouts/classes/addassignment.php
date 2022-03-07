@@ -2,9 +2,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Thong tin ca nhan</title>
+        <title>Giao bai tap</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../05_SimplePHP/Public/style/form.css">
     </head>
     <body>
         <?php
@@ -18,7 +19,10 @@
         }
         ?>
         <br>
-        <h1>Giao bài tập</h1>
+        <h1 class="text-center">Giao bài tập</h1>
+        <div class="modal-body" >
+        <div class="title-login-form">
+        <div class="form">
         <form method="post" enctype="multipart/form-data">
                 <input type="file" name="file" id="file">
                 <br>
@@ -30,7 +34,11 @@
                 <br>
                 <?php   $datetime = new DateTime('tomorrow');?>
                 <input type="datetime" name="due" value="<?php echo $datetime->format('Y-m-d H:i:s'); ?>"  />
-                <input type="submit" value="Giao bài tập" name="fileupload">
+                <input class="submit-button" type="submit" value="Giao bài tập" name="fileupload">
         </form>
+    </div>
+    </div>
+    </div>
+
     </body>
 </html>

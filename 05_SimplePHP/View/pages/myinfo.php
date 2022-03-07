@@ -5,17 +5,24 @@ class Header {
 	{
 		require_once('../05_SimplePHP/Model/client/UserModel.php');
 		$userModel = new UserModel();
+		if (isset($_SESSION['student'])){
+			$role = 'student';
+		}
+		if (isset($_SESSION['teacher'])){
+			$role = 'teacher';
+		}
 		if (!empty($_POST['imageupload'])) 
 		{
-			$error = $this->ImageUpload($userModel);
+			$error = $this->ImageUpload($userModel,$role);
 		}
-        $id = $_SESSION['student']['id'];
-		$error = $this->Edit($userModel);
-	    $info = $userModel->readuser($id)->fetch_array();
+
+		$id = $_SESSION[$role]['id'];
+			$error = $this->Edit($userModel);
+			$info = $userModel->readuser($id)->fetch_array();
 		require_once('../05_SimplePHP/View/layouts/client/myinfo.php');
 	}
 
-	public function ImageUpload($userModel) {
+	public function ImageUpload($userModel,$role) {
         $username = $password = NULL;
 		$error = array();
 		$error['username'] = $error['password'] = NULL;
@@ -40,7 +47,7 @@ class Header {
 			// Đã có dữ liệu upload, thực hiện xử lý file upload
 
 			//Thư mục bạn sẽ lưu file upload
-			$target_dir    = "D:/VCS_training/05_SimplePHP/upload/";
+			$target_dir    = "../05_SimplePHP/upload/";
 			//Vị trí file lưu tạm trong server (file sẽ lưu trong uploads, với tên giống tên ban đầu)
 			$target_file   = $target_dir . basename($_FILES["fileupload"]["name"]);
 
@@ -84,10 +91,9 @@ class Header {
 				// Xử lý di chuyển file tạm ra thư mục cần lưu trữ, dùng hàm move_uploaded_file
 				if (move_uploaded_file($_FILES["fileupload"]["tmp_name"], $target_file))
 				{
+					$_SESSION[$role]['avatar'] = $target_file;
+					$userModel->updatestudentavatar($_SESSION[$role]['id'],$target_file);
 					echo "<script>alert('Đã upload thành công.')</script>";
-
-					$_SESSION['student']['avatar'] = $target_file;
-					$userModel->updatestudentavatar($_SESSION['student']['id'],$target_file);
 				}
 				else
 				{
@@ -102,7 +108,12 @@ class Header {
 	} // end upload
 
 	public function Edit($userModel) {
-        $id = $_SESSION['student']['id'];
+		if (isset($_SESSION['student'])){
+			$id = $_SESSION['student']['id'];
+		}
+		if (isset($_SESSION['teacher'])){
+			$id = $_SESSION['teacher']['id'];
+		}
         $username = $password = $hoten = $email = $phonenumber = $avatar = $role = NULL;
         $role = "student";
 		$error = array();
@@ -131,7 +142,6 @@ class Header {
 			} else {
 				$phonenumber = $_POST['phonenumber'];
 			}
-
 
 			$userModel->updatestudentforstudent($id, $password, $email, $phonenumber);
             } // end post edit

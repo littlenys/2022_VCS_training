@@ -14,7 +14,6 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
                             <div class="title-login-form"><h1>Đăng nhập</h1></div>
@@ -40,15 +39,15 @@
                                 ?><h3>
                             
                                 <form method="post">
-                                    <label>Tên đăng nhập *</label>
-                                    <br>
+                                    <label class="form-item-label">Tên đăng nhập *</label>
                                     <input type="text" name="username" placeholder="Tên đăng nhập" />
                                     <br>
-                                    <label>Mật khẩu *</label>
-                                    <br>
+                                    <label class="form-item-label">Mật khẩu *</label>
                                     <input type="password" name="password" placeholder="Mật khẩu" />
                                     <br><br>
-                                    <button type="submit" value="Login" name="login">Đăng nhập</button>
+                                    <div align="center">
+                                    <button class="submit-button" type="submit" value="Login" name="login">Đăng nhập</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

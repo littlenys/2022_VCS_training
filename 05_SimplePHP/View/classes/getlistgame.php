@@ -7,12 +7,13 @@ class Header {
 
 		$userModel = new UserModel();
 		$list = $this->GetAllGame($userModel);
-
+        $isresultcorrect = Null;
         if (!empty($_POST['submit']))
         {
-            $error = $this->Answer($userModel);
+            $isresultcorrect = $this->Answer($userModel);
         }
 		require_once('../05_SimplePHP/View/layouts/classes/getlistgame.php');
+   
 	}
 
 	public function GetAllGame($userModel) 
@@ -28,12 +29,12 @@ class Header {
         $answer = $_POST['answer'];
         $game = $userModel->getresultgame($id)->fetch_array();
         if ( md5($answer) == $game['tenfile']){
-            echo "Correct";
-            echo file_get_contents($game['url']);
+            return "Correct - ".file_get_contents($game['url']);
         }
         else{
-            echo "Incorrect";
+            return "Incorrect";
         }
+
 	}
 
 }

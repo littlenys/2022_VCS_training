@@ -164,7 +164,7 @@ class UserModel extends Database{
 
 	public function addsubmission($authorid,$assigmentid)
 	{
-		$sql1 = "INSERT INTO submission (authorid,assigmentid)
+		$sql1 = "INSERT INTO submission (authorid,assignmentid)
 		VALUES ('$authorid','$assigmentid')";
 		if ($this->db->conn->query($sql1) === TRUE){
 			$last_id = $this->db->conn->insert_id; 
