@@ -1,7 +1,9 @@
 <!doctype html>
 <html class="no-js" lang="">
 
-
+<head>
+    <link rel="stylesheet" href="../05_SimplePHP/Public/style/background.css">
+    </head>
     <body>
         <div id="preloader"></div>
         <!-- Preloader End Here -->
