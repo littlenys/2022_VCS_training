@@ -38,5 +38,15 @@ class ClassesController extends BaseController
   {
     $this->render('getlistsubmission');
   }
+
+  public function addgame()
+  {
+    $this->render('addgame');
+  }
+
+  public function getlistgame()
+  {
+    $this->render('getlistgame');
+  }
   
 }

@@ -173,6 +173,7 @@ class UserModel extends Database{
 		return NULL;
 	}
 
+
 	public function viewsubmission($id)
 	{
 		$sql = "SELECT * FROM fileattach WHERE partid = '$id' AND part = 'submission'";
@@ -186,6 +187,32 @@ class UserModel extends Database{
 		$result = $this->db->conn->query($sql);
 		return $result;
 	}
+
+	public function addgame($authorid,$goiy)
+	{
+		$sql1 = "INSERT INTO game (authorid,goiy)
+		VALUES ('$authorid','$goiy')";
+		if ($this->db->conn->query($sql1) === TRUE){
+			$last_id = $this->db->conn->insert_id; 
+			return $last_id;
+		}
+		return NULL;
+	}
+
+	public function getlistgame()
+	{
+		$sql = "SELECT * FROM game WHERE is_deleted = false";
+		$result = $this->db->conn->query($sql);
+		return $result;
+	}
+
+	public function getresultgame($id)
+	{
+		$sql = "SELECT * FROM fileattach WHERE partid = '$id' AND part = 'game'";
+		$result = $this->db->conn->query($sql);
+		return $result;
+	}
+
 
 	public function fileattach($part, $partid, $tenfile, $url)
 	{

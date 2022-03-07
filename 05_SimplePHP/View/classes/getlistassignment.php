@@ -12,12 +12,6 @@ class Header {
         {
             $error = $this->ReadAssignment($userModel);
         }
-
-        if (!empty($_POST['update']))
-        {
-            $error = $this->UpdateStudent($userModel);
-            header("Refresh:0");
-        }
 		require_once('../05_SimplePHP/View/layouts/classes/getlistassignment.php');
 	}
 
