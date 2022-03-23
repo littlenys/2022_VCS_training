@@ -19,12 +19,12 @@ return new class extends Migration
             $table->string('hoten');
             $table->string('email')->unique();
             $table->char('phonenumber', 16);
-            $table->string('avatar');
+            $table->string('avatar')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('role', ['student', 'teacher']);
+            $table->enum('role', ['student', 'teacher'])->default('student');
             $table->rememberToken();
-            $table->boolean('is_deleted');
+            $table->boolean('is_deleted')->default(false);
             $table->timestamps('');
         });
     }
