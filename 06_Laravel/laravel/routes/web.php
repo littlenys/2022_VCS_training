@@ -26,11 +26,7 @@ Route::group(['middleware' => 'auth'],function(){
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])
         ->name('profile.update');
 
-    Route::resource(name:'listusers',controller:\App\Http\Controllers\ListusersController::class);
-
-    Route::get('/listusers', function () {
-        return view('listusers');
-    })->name('listusers');
+    Route::resource(name: 'listusers',controller:\App\Http\Controllers\ListusersController::class);
 
 });
 
