@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Message;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class ListusersController extends Controller
+class MessagesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,7 @@ class ListusersController extends Controller
      */
     public function index()
     {
-        $tasks = User::paginate(30)->where('is_deleted', false);
-
-        return view('listusers.index', compact('tasks'));
+        //
     }
 
     /**
@@ -39,7 +36,20 @@ class ListusersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'idrev' => ['required'],
+            'noidung' => ['required'],
+        ]);
+
+        $back=$request->idrev;
+
+        $user = Message::create([
+            'idsend' =>  auth()->user()->id,
+            'idrev' => $request->idrev,
+            'noidung' => $request->noidung,
+        ]);
+
+        return redirect(route('listusers.show',$back));
     }
 
     /**
@@ -50,10 +60,7 @@ class ListusersController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        $messages = Message::where([['idsend','=',auth()->user()->id],['idrev','=',$id]])->get();
-
-        return view('listusers.show',compact('user','messages'));
+        //
     }
 
     /**
@@ -64,9 +71,7 @@ class ListusersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-
-        return view('listusers.edit',compact('user'));
+        //
     }
 
     /**
@@ -78,18 +83,10 @@ class ListusersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        $user->username = $request->username;
-        $user->email = $request->email;
-        $user->hoten = $request->hoten;
-        $user->phonenumber = $request->phonenumber;
-        if ($request->password != null){
-            $user->password= Hash::make($request->password);
-        }
-
-
-        $user->save();
-        return redirect()->route('listusers.index')->with('success','Cập nhật thông tin thành công.');
+        $mess = Message::find($id);
+        $mess->noidung = $request->noidung;
+        $mess->save();
+        return redirect()->back();
     }
 
     /**
@@ -100,9 +97,8 @@ class ListusersController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->is_deleted = true;
-        $user->save();
-        return redirect()->route('listusers.index')->with('success','Cập nhật thông tin thành công.');
+        $mess = Message::find($id);
+        $mess->delete();
+        return redirect()->back();
     }
 }

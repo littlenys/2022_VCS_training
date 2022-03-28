@@ -27,6 +27,8 @@ Route::group(['middleware' => 'auth'],function(){
         ->name('profile.update');
 
     Route::resource(name: 'listusers',controller:\App\Http\Controllers\ListusersController::class);
+    Route::resource(name: 'messages',controller:\App\Http\Controllers\MessagesController::class);
+
 
 });
 

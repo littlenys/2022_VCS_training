@@ -1404,3 +1404,6 @@ select {
   }
 }
 
+.break-words {
+    word-wrap: break-word;
+}

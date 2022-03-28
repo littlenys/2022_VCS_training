@@ -22,46 +22,60 @@
                                             <col span="1" style="width: 30%;">
                                         </colgroup>
                                         <thead class="bg-gray-50">
-                                        <tr>
-                                            <th scope="col" class="px-6 py-3">
-                                                ID
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                Họ tên
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                Email
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                Số điện thoại
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                <span class="sr-only">Thao tác</span>
-                                            </th>
-                                        </tr>
+                                            <tr>
+                                                <th scope="col" class="px-6 py-3">
+                                                    ID
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Họ tên
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Email
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Số điện thoại
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    <span class="sr-only">Thao tác</span>
+                                                </th>
+                                            </tr>
                                         </thead>
                                         <tbody class="bg-white divide-y divide-gray-200">
-                                        @foreach ($tasks as $task)
-                                        <tr>
-                                            <td class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">
-                                                {{ $task->id }}
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {{ $task->hoten }}
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {{ $task->email }}
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {{ $task->phonenumber }}
-                                            </td>
-                                            <td class="px-6 py-4 flex text-sm font-medium"  style="justify-content: space-around;">
-                                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Xem</a>
-                                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Sửa</a>
-                                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Xóa</a>
-                                            </td>
-                                        </tr>
-                                        @endforeach
+                                            @foreach ($tasks as $task)
+                                            <tr>
+                                                <td class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">
+                                                    {{ $task->id }}
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                    {{ $task->hoten }}
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                    {{ $task->email }}
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                    {{ $task->phonenumber }}
+                                                </td>
+                                                <td class="px-6 py-4 flex text-sm font-medium" style="justify-content: space-around;">
+                                                    <a href="{{route('listusers.show',$task->id)}}" class="text-indigo-600 hover:text-indigo-900">
+                                                        <x-button class="ml-3">
+                                                            {{ __('Xem') }}
+                                                        </x-button>
+                                                    </a>
+                                                    <a href="{{route('listusers.edit',$task->id)}}" class="text-indigo-600 hover:text-indigo-900">
+                                                        <x-button class="ml-3">
+                                                            {{ __('Sửa') }}
+                                                        </x-button>
+                                                    </a>
+                                                    <form method="POST" action="{{route('listusers.destroy',$task->id)}}">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <x-button class="ml-3  btn btn-sm btn-danger btndelete">
+                                                            {{ __('Xóa') }}
+                                                        </x-button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
 
@@ -76,3 +90,16 @@
         </div>
     </div>
 </x-app-layout>
+
+@section('js')
+<script>
+    $('.btndelete').click(function(ev) {
+        ev.preventDefault();
+        var _href = $(this).attr('href');
+        $('form#form-delete').attr('action', _href);
+        if (confirm('Bạn muốn xóa bản ghi này không?')) {
+            $('form#form-delete').submit()
+        }
+    });
+</script>
+@endsection
