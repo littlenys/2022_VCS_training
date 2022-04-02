@@ -7,6 +7,8 @@ use App\Models\FileAttach;
 use App\Models\Submission;
 use App\Models\Assignment;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+
 
 class SubmissionController extends Controller
 {
@@ -46,6 +48,7 @@ class SubmissionController extends Controller
         $name = $request->file('file')->getClientOriginalName();
 
         $path = $request->file('file')->store('public/files');
+        $savepath = Storage::path($path);
 
         $partid = Submission::create([
             'authorid' =>  auth()->user()->id,
@@ -56,7 +59,7 @@ class SubmissionController extends Controller
             'part' =>  "submission",
             'partid' => $partid,
             'tenfile' =>  $name,
-            'url' => $path
+            'url' => $savepath
         ]);
 
         return redirect(route('assignment.index'));

@@ -14,13 +14,17 @@
                     </h2>
                     <br>
                     <?php if ($iscorrect == false) { ?>
-                        echo "Incorrect";
-
+                        <h2 class="font-semibold text-xl text-red-600 leading-tight text-center">
+                            {{ __('INCORRECT') }}
+                        </h2>
                     <?php } ?>
                     <?php if ($iscorrect == true) {
-                        echo "Correct";
                     ?>
-                        {{ $content }}
+                        <h2 class="font-semibold text-xl text-green-600 leading-tight text-center ">
+                            {{ $content }}
+                        </h2>
+
+
 
                     <?php } ?>
 

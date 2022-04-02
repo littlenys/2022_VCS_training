@@ -13,6 +13,19 @@
                         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                <?php if (auth()->user()->role == 'teacher') { ?>
+                                    <a href="{{route('listusers.create')}}" class="text-indigo-600 hover:text-indigo-900">
+                                        <x-button class="ml-3 ">
+                                            {{ __('Thêm sinh viên ') }}
+                                        </x-button>
+                                    </a>
+                                    <?php } ?>
+                                    <br>
+                                    <br>
+                                    <h2 class="font-semibold text-center text-xl text-gray-800 leading-tight">
+                                        {{ __('Danh sách') }}
+                                    </h2>
+                                    <br>
                                     <table class="min-w-full divide-y divide-gray-200">
                                         <colgroup>
                                             <col span="1" style="width: 10%;">
@@ -61,6 +74,7 @@
                                                             {{ __('Xem') }}
                                                         </x-button>
                                                     </a>
+                                                    <?php if (auth()->user()->role == 'teacher') { ?>
                                                     <a href="{{route('listusers.edit',$task->id)}}" class="text-indigo-600 hover:text-indigo-900">
                                                         <x-button class="ml-3">
                                                             {{ __('Sửa') }}
@@ -73,6 +87,7 @@
                                                             {{ __('Xóa') }}
                                                         </x-button>
                                                     </form>
+                                                    <?php } ?>
                                                 </td>
                                             </tr>
                                             @endforeach

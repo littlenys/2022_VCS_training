@@ -86,17 +86,11 @@
                                 </td>
                                 <td class="px-6 py-4 flex text-sm font-medium flex" style="justify-content: space-around;">
                                     <form method="POST" action="{{ route('game.update',$info->id) }}">
-                                        @method('PUT')
-                                        @csrf
-                                        <div class="grid grid-rows-2 gap-6 w-48 flex">
-                                            <div>
-                                                <x-input id="id" class="" name="id" type="hidden" value="{{ $info->id }}" />
-                                                <x-input id="result" class="inline-block" type="text" name="result" placeholder="Đáp án" />
-                                                <x-button class="">
-                                                    {{ __('Trả lời') }}
-                                                </x-button>
-                                            </div>
-                                        </div>
+                                    @method('PUT')
+                                    @csrf
+                                    <x-input id="id" class="" name="id" type="hidden" value="{{ $info->id }}" />
+                                    <x-input id="result" class="inline-block" type="text" name="result" placeholder="Đáp án" />
+                                    <x-button class="">{{ __('Trả lời') }}</x-button>
                                     </form>
                                 </td>
                             </tr>

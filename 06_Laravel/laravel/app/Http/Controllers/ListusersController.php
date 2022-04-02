@@ -6,6 +6,11 @@ use App\Models\User;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules;
 
 class ListusersController extends Controller
 {
@@ -28,7 +33,7 @@ class ListusersController extends Controller
      */
     public function create()
     {
-        //
+        return view('listusers.create');
     }
 
     /**
@@ -39,7 +44,31 @@ class ListusersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'username' => ['required', 'string', 'max:255' , 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'hoten' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'phonenumber' => [ 'string', 'max:255'],
+            'avatar' => ['string', 'max:512'],
+            'role' => ['string', 'max:512'],
+        ]);
+
+        $user = User::create([
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'hoten' => $request->hoten,
+            'phonenumber' => $request->phonenumber,
+            'avatar' => $request->avatar,
+            'role' => $request->role,
+        ]);
+
+        event(new Registered($user));
+
+        $tasks = User::paginate(30)->where('is_deleted', false);
+
+        return view('listusers.index', compact('tasks'));
     }
 
     /**

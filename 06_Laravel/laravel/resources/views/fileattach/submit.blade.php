@@ -92,7 +92,7 @@
                                         {{ $sub->created_at }}
                                     </td>
                                     <td class="px-6 py-4 flex text-sm font-medium" style="justify-content: space-around;">
-                                        <a href="{{ $fileattach->where('part','submission')->where('partid',$sub->id)->first()->url }}" class="text-indigo-600 hover:text-indigo-900">
+                                        <a href="{{ route('fileattach.show',$fileattach->where('part','submission')->where('partid',$sub->id)->first()->id) }}" class="text-indigo-600 hover:text-indigo-900">
                                             <x-button class="ml-3">
                                                 {{ __('Xem') }}
                                             </x-button>
