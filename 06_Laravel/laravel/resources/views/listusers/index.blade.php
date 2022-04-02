@@ -13,12 +13,12 @@
                         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                <?php if (auth()->user()->role == 'teacher') { ?>
-                                    <a href="{{route('listusers.create')}}" class="text-indigo-600 hover:text-indigo-900">
-                                        <x-button class="ml-3 ">
-                                            {{ __('Thêm sinh viên ') }}
-                                        </x-button>
-                                    </a>
+                                    <?php if (auth()->user()->role == 'teacher') { ?>
+                                        <a href="{{route('listusers.create')}}" class="text-indigo-600 hover:text-indigo-900">
+                                            <x-button class="ml-3 ">
+                                                {{ __('Thêm sinh viên ') }}
+                                            </x-button>
+                                        </a>
                                     <?php } ?>
                                     <br>
                                     <br>
@@ -75,20 +75,20 @@
                                                         </x-button>
                                                     </a>
                                                     <?php if (auth()->user()->role == 'teacher') { ?>
-                                                    <a href="{{route('listusers.edit',$task->id)}}" class="text-indigo-600 hover:text-indigo-900">
-                                                        <x-button class="ml-3">
-                                                            {{ __('Sửa') }}
-                                                        </x-button>
-                                                    </a>
-                                                    <?php } ?>
-                                                    <form method="POST" action="{{route('listusers.destroy',$task->id)}}">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <x-button class="ml-3  btn btn-sm btn-danger btndelete">
-                                                            {{ __('Xóa') }}
-                                                        </x-button>
-                                                    </form>
+                                                        <a href="{{route('listusers.edit',$task->id)}}" class="text-indigo-600 hover:text-indigo-900">
+                                                            <x-button class="ml-3">
+                                                                {{ __('Sửa') }}
+                                                            </x-button>
+                                                        </a>
 
+                                                        <form method="POST" action="{{route('listusers.destroy',$task->id)}}">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <x-button class="ml-3  btn btn-sm btn-danger btndelete">
+                                                                {{ __('Xóa') }}
+                                                            </x-button>
+                                                        </form>
+                                                    <?php } ?>
                                                 </td>
                                             </tr>
                                             @endforeach
