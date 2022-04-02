@@ -32,8 +32,15 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('profile.update');
 
 
-    Route::resource(name: 'listusers', controller: \App\Http\Controllers\ListusersController::class);
+    //Route::resource(name: 'listusers', controller: \App\Http\Controllers\ListusersController::class)->middleware('role');
+    Route::get('/listusers','\App\Http\Controllers\ListusersController@index') ->name('listusers.index');
     Route::get('/listusers/create','\App\Http\Controllers\ListusersController@create') ->name('listusers.create')->middleware('role');
+    Route::post('/listusers','\App\Http\Controllers\ListusersController@store') ->name('listusers.store')->middleware('role');
+    Route::put('/listusers/{id}','\App\Http\Controllers\ListusersController@update') ->name('listusers.update')->middleware('role');
+    Route::delete('/listusers/{id}','\App\Http\Controllers\ListusersController@destroy') ->name('listusers.destroy')->middleware('role');
+    Route::get('/listusers/{id}','\App\Http\Controllers\ListusersController@show') ->name('listusers.show');
+    Route::get('/listusers/{id}/edit','\App\Http\Controllers\ListusersController@edit') ->name('listusers.edit')->middleware('role');
+
     Route::resource(name: 'messages', controller: \App\Http\Controllers\MessagesController::class);
     Route::resource(name: 'fileattach', controller: \App\Http\Controllers\FileAttachController::class);
     Route::resource(name: 'assignment', controller: \App\Http\Controllers\AssignmentController::class);

@@ -80,6 +80,7 @@
                                                             {{ __('Sửa') }}
                                                         </x-button>
                                                     </a>
+                                                    <?php } ?>
                                                     <form method="POST" action="{{route('listusers.destroy',$task->id)}}">
                                                         @method('DELETE')
                                                         @csrf
@@ -87,7 +88,7 @@
                                                             {{ __('Xóa') }}
                                                         </x-button>
                                                     </form>
-                                                    <?php } ?>
+
                                                 </td>
                                             </tr>
                                             @endforeach
