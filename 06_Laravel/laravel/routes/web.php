@@ -44,8 +44,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource(name: 'messages', controller: \App\Http\Controllers\MessagesController::class);
     Route::resource(name: 'fileattach', controller: \App\Http\Controllers\FileAttachController::class);
     Route::resource(name: 'assignment', controller: \App\Http\Controllers\AssignmentController::class);
+    Route::get('/assignment/create','\App\Http\Controllers\AssignmentController@create') ->name('assignment.create')->middleware('role');
+    Route::post('/assignment','\App\Http\Controllers\AssignmentController@store') ->name('assignment.store')->middleware('role');
     Route::resource(name: 'submission', controller: \App\Http\Controllers\SubmissionController::class);
     Route::resource(name: 'game', controller: \App\Http\Controllers\GameController::class);
+    Route::get('/game/create','\App\Http\Controllers\GameController@create') ->name('game.create')->middleware('role');
+    Route::post('/game','\App\Http\Controllers\GameController@store') ->name('game.store')->middleware('role');
 
 //     +--------+-----------+-------------------+---------------+---------------------------------------------+--------------+
 // | Domain | Method    | URI               | Name          | Action                                      | Middleware   |
